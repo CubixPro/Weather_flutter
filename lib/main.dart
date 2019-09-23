@@ -5,12 +5,13 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
+  
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Colors.black,
+        primaryColor: Colors.cyan,
         
       ),
       home: MyHomePage(),
@@ -58,8 +59,15 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text("Retry App"),
+        title: Text("Retry App")
       ),
+      body: new Center(
+        child: new RaisedButton(
+          onPressed: null,
+          child: new Text("Get Data"),
+          color: Colors.black,
+          ),
+      )
       
     );
   }
