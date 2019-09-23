@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
+import 'post.dart';
+import 'services.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
-  
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Colors.cyan,
-        
       ),
       home: MyHomePage(),
     );
@@ -20,7 +20,6 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
   // how it looks.
@@ -29,7 +28,6 @@ class MyHomePage extends StatefulWidget {
   // case the title) provided by the parent (in this case the App widget) and
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
-
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -56,19 +54,25 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text("Retry App")
-      ),
-      body: new Center(
-        child: new RaisedButton(
-          onPressed: null,
-          child: new Text("Get Data"),
-          color: Colors.black,
-          ),
-      )
-      
-    );
+        appBar: AppBar(
+            // Here we take the value from the MyHomePage object that was created by
+            // the App.build method, and use it to set our appbar title.
+            title: Text("Retry App")),
+        body: new Center(
+            child: FutureBuilder<Post>(
+                future: getPost(),
+                builder: (context, snapshot) {
+                  if(snapshot.connectionState == ConnectionState.done)
+                    if(snapshot.hasError){
+                      return Text("hello") ;
+                    }
+                    else
+                      return Text('${snapshot.data.title}');
+                  else
+                    return CircularProgressIndicator();
+                }
+            )
+        )
+      );
   }
 }
