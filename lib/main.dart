@@ -47,6 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final mycontroller = TextEditingController();
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -59,20 +60,59 @@ class _MyHomePageState extends State<MyHomePage> {
             // the App.build method, and use it to set our appbar title.
             title: Text("Retry App")),
         body: new Center(
-            child: FutureBuilder<Post>(
+            child: FutureBuilder<Weather>(
                 future: getPost(),
                 builder: (context, snapshot) {
-                  if(snapshot.connectionState == ConnectionState.done)
-                    if(snapshot.hasError){
-                      return Text("hello") ;
-                    }
-                    else
-                      return Text('${snapshot.data.title}');
+                  if (snapshot.connectionState == ConnectionState.done)
+                    //return Text('${snapshot.data.name}');
+                    return Column(children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                      ),
+                      Column(
+                        children: <Widget>[
+                          Image.network(
+                              'https://openweathermap.org/img/w/01d.png'),
+                          Text(snapshot.data.name),
+                          Container(
+                              width: 300.0,
+                              child: new TextField(
+                                decoration: InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  labelText: 'City Name',
+                                ),
+                                cursorColor: Colors.cyan,
+                                controller: mycontroller, 
+                              )),
+                          FloatingActionButton(
+                            onPressed: () {
+                              return showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    // Retrieve the text the user has entered by using the
+                                    // TextEditingController.
+                                    content: Text(mycontroller.text),
+                                  );
+                                },
+                              );
+                            },
+                            tooltip: 'Show me my city',
+                          )
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: IconButton(
+                          icon: new Icon(Icons.refresh),
+                          tooltip: 'Refresh',
+                          onPressed: () => null,
+                          color: Colors.black,
+                        ),
+                      )
+                    ]);
                   else
                     return CircularProgressIndicator();
-                }
-            )
-        )
-      );
+                })));
   }
 }
