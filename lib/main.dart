@@ -82,23 +82,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                   labelText: 'City Name',
                                 ),
                                 cursorColor: Colors.cyan,
-                                controller: mycontroller, 
+                                controller: mycontroller,
                               )),
-                          FloatingActionButton(
-                            onPressed: () {
-                              return showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return AlertDialog(
-                                    // Retrieve the text the user has entered by using the
-                                    // TextEditingController.
-                                    content: Text(mycontroller.text),
-                                  );
-                                },
-                              );
-                            },
-                            tooltip: 'Show me my city',
-                          )
                         ],
                       ),
                       Padding(
