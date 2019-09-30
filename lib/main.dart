@@ -108,8 +108,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                           clipBehavior:
                                               Clip.antiAliasWithSaveLayer,
                                           //color: Colors.black,
-                                          child: new Image.network(
-                                            'https://imgur.com/gallery/PrktCzC',
+                                          child: new Image.asset(
+                                           '../assets/image.jpg', 
                                             fit: BoxFit.cover,
                                           ),
                                           shape: RoundedRectangleBorder(
