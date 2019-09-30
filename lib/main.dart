@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:new_app/SearchRoute.dart' as prefix0;
 import 'post.dart';
 import 'services.dart';
 import 'weatherdata.dart';
 import 'weatheritem.dart';
+import 'SearchRoute.dart';
 
 List ids = [
   1275004,
@@ -49,12 +51,12 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text('Weather Tiles'),
       ),
-      backgroundColor: Colors.pink[100],
-      body: Column(children: <Widget>[
+      backgroundColor: Colors.pink[300],
+      body: Center(child:Column(children: <Widget>[
         Container(
           height: 530,
           child: Padding(
-              padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+              padding: const EdgeInsets.fromLTRB(20, 25, 20, 0),
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: ids.length,
@@ -153,34 +155,27 @@ class _MyHomePageState extends State<MyHomePage> {
             'Its really easy'
           ),);});
         },)
-       ],)*/ ]),
+       ],)*/ ])),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          /*return TextField(
-            decoration: InputDecoration(
-                border: InputBorder.none, hintText: 'Enter a search term'),
-          );*/
-          return showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  backgroundColor: Colors.blue[100],
-                  title: Text('Add a new city'),
-                  actions: <Widget>[],
-                );
-              });
+          Navigator.push(context, 
+          MaterialPageRoute(builder: (context) => MyRoute()),) ;
         },
         child: Icon(Icons.add),
         tooltip: 'Add a new city',
       ),
       bottomNavigationBar: Container(
-          child: SafeArea(
-              child: BottomNavigationBar(elevation: 20.0, items: [
+          child: 
+               BottomNavigationBar(elevation: 20.0, items: [
         BottomNavigationBarItem(
-            title: Text('Search'), icon: Icon(Icons.search)),
+            title: Text('Search'), icon: Icon(Icons.search),
+             
+            ),
         BottomNavigationBarItem(
             title: Text('My Cities'), icon: Icon(Icons.location_city))
-      ]))),
+      ],
+      
+      )),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
