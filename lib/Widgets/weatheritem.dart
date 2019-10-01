@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'WeatherData.dart';
-import 'post.dart';
+import '../Models/weather.dart';
 
 class WeatherItem extends StatelessWidget {
   final Weather weather;

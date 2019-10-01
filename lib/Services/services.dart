@@ -1,6 +1,6 @@
 import 'package:http/http.dart' as http;
 import 'dart:async';
-import 'post.dart';
+import '../Models/weather.dart';
 import 'dart:io';
 
 String url = 'https://api.openweathermap.org/data/2.5/weather?q=';

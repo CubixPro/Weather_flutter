@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'post.dart';
-import 'services.dart';
-import 'weatherdata.dart';
-import 'weatheritem.dart';
-import 'SearchRoute.dart';
-import 'Form.dart';
+import 'Widgets/SearchRoute.dart';
+import 'Widgets/weatheritem.dart';
+import 'Services/services.dart';
+import 'Models/weather.dart';
+import 'Models/weatherdata.dart';
+
 
 List
     /*ids = [
@@ -55,7 +55,25 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text('Weather Tiles'),
         ),
         backgroundColor: Colors.white,
-        body: Center(
+        body: Container(
+      // Add box decoration
+      decoration: BoxDecoration(
+        // Box decoration takes a gradient
+        gradient: LinearGradient(
+          // Where the linear gradient begins and ends
+          begin: Alignment.topRight,
+          end: Alignment.bottomLeft,
+          // Add one stop for each color. Stops should increase from 0 to 1
+          stops: [0.1, 0.5, 0.7, 0.9],
+          colors: [
+            // Colors are easy thanks to Flutter's Colors class.
+            Colors.indigo[800],
+            Colors.indigo[700],
+            Colors.indigo[600],
+            Colors.indigo[400],
+          ],
+        ),),
+        child:Center(
             child: Column(children: <Widget>[
           Container(
             height: 550,
@@ -67,15 +85,18 @@ class _MyHomePageState extends State<MyHomePage> {
                     itemBuilder: (BuildContext context, int index) {
                       return Container(
                           height: 400,
+                          //decoration: BoxDecoration(gradient: ),
                           child: Padding(
                             padding: const EdgeInsets.all(5),
                             child:Column(children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.all(8),
                               child: Card(
+                                
                                 color: Colors.cyan[100],
                                   child: Padding(
                                       padding: const EdgeInsets.all(16),
+
                                       child: Column(children: <Widget>[
                                         Padding(
                                           padding: const EdgeInsets.all(5),
@@ -95,8 +116,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                                             child: Column(
                                                                 children: <
                                                                     Widget>[
-                                                              Text(myController
-                                                                  .text),
+                                                              Text(ids[index]
+                                                                  ),
                                                               Text(
                                                                 'Not found',
                                                                 style: TextStyle(
@@ -194,7 +215,7 @@ class _MyHomePageState extends State<MyHomePage> {
        ],)*/
         ]),
         
-        ),
+        ),),
         floatingActionButton: FloatingActionButton(onPressed: (){
           Navigator.push(
                 context,

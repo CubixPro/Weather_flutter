@@ -35,6 +35,7 @@ class MyRoute extends StatelessWidget {
               child: Text('Go back'),
               shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30)),
               onPressed: () {
+                myController.text = '';
                 Navigator.pop(context);
               })),
           Padding(
