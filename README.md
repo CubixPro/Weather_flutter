@@ -1,4 +1,4 @@
-# new_app
+# Weather Tiles
 
 A flutter app to show Weather details of cities around a world using OpenWeatherAPI
 
