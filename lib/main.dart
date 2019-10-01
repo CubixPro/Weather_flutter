@@ -126,6 +126,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         ]));
                   })),
         ),
+        
+        RaisedButton(child: Text('Remove City ID'),
+        onPressed: (){
+
+          Navigator.push(context, 
+          MaterialPageRoute(builder: (context) => MyRoute(action: -1,)),) ;
+        },),
        /*Center(child:
        Padding(
          padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
@@ -160,7 +167,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(context, 
-          MaterialPageRoute(builder: (context) => MyRoute()),) ;
+          MaterialPageRoute(builder: (context) => MyRoute(action: 1,)),) ;
         },
         child: Icon(Icons.add),
         tooltip: 'Add a new city',

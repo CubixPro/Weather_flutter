@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'Form.dart';
 
 class MyRoute extends StatelessWidget {
+  final int action;//action 1 is add, action -1 is remove
+  MyRoute({@required this.action});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,20 +26,9 @@ class MyRoute extends StatelessWidget {
             child: Card(
                 color: Colors.indigo[100],
                 child: Padding(
-                    padding: const EdgeInsets.all(25), child: MyCustomForm())),
+                    padding: const EdgeInsets.all(25), child: MyCustomForm(action2: action,))),
           ),
-          RaisedButton(
-            child: Text('My entered data'),
-            onPressed: () {
-              return showDialog(
-                  context: context,
-                  builder: (context) {
-                    return AlertDialog(
-                      content: Text(myController.text),
-                    );
-                  });
-            },
-          ),
+          
         ]))));
   }
 }

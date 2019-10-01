@@ -16,20 +16,24 @@ class MyForm extends StatelessWidget {
         appBar: AppBar(
           title: Text(appTitle),
         ),
-        body: MyCustomForm(),
+        body: MyCustomForm(action2: 1,),
       ),
     );
   }
 }
 
 class MyCustomForm extends StatefulWidget {
+  final int action2;
+  MyCustomForm({@required this.action2});
   @override
   MyCustomFormState createState() {
-    return MyCustomFormState();
+    return MyCustomFormState(action3: action2);
   }
 }
 
 class MyCustomFormState extends State<MyCustomForm> {
+  final int action3;
+  MyCustomFormState({@required this.action3});
   final _formKey = GlobalKey<FormState>();
     @override
   Widget build(BuildContext context) {
@@ -56,7 +60,10 @@ class MyCustomFormState extends State<MyCustomForm> {
               onPressed: () {
                 // Validate returns true if the form is valid, or false
                 // otherwise.
-                ids.add(int.parse(myController.text));
+                if(action3 == 1) 
+                  ids.add(int.parse(myController.text));
+                else if(action3 == -1)
+                  ids.remove(int.parse(myController.text));
                 if (_formKey.currentState.validate()) {
                   // If the form is valid, display a Snackbar.
                   Scaffold.of(context)
