@@ -60,16 +60,39 @@ class MyCustomFormState extends State<MyCustomForm> {
               onPressed: () {
                 // Validate returns true if the form is valid, or false
                 // otherwise.
-                if(action3 == 1) 
-                  ids.add(int.parse(myController.text));
-                else if(action3 == -1)
-                  ids.remove(int.parse(myController.text));
+                if(action3 == -1) 
+                {
+                  if(ids.contains(myController.text))
+                    ids.remove(myController.text);
+                  else
+                  {
+                     return showDialog(
+                      context: context,
+                      builder: (context){
+                      return AlertDialog(
+                        title: Text('City not in List'),);
+                      });
+                  }
+                }
+                else if(action3 == 1)
+                {
+                  if(ids.contains(myController.text))
+                    return showDialog(
+                      context: context,
+                      builder: (context){
+                      return AlertDialog(
+                        title: Text('City already added'),);
+                      });
+                  else
+                    ids.add(myController.text);
+                }
                 if (_formKey.currentState.validate()) {
                   // If the form is valid, display a Snackbar.
                   Scaffold.of(context)
                       .showSnackBar(SnackBar(content: Text('Processing Data')));
                 }
               },
+              shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
               child: Text('Submit'),
             ),
           ),
