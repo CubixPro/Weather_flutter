@@ -8,4 +8,4 @@ A flutter app to show Weather details of cities around a world using OpenWeather
 * If you need to add your own cities use the `+` button
 * If you need to remove cities, use the `Remove Cities` button
 
-#### List of cities can be found in [City json file](https://github.com/CubixPro/new_app/blob/master/assets/city.list.json)
+#### List of cities can be found in [City json file](https://raw.githubusercontent.com/CubixPro/new_app/master/assets/city.list.json)
