@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'main.dart';
+
+
+ final myController = TextEditingController();
 
 
 class MyForm extends StatelessWidget {
@@ -27,8 +31,7 @@ class MyCustomForm extends StatefulWidget {
 
 class MyCustomFormState extends State<MyCustomForm> {
   final _formKey = GlobalKey<FormState>();
-
-  @override
+    @override
   Widget build(BuildContext context) {
     // Build a Form widget using the _formKey created above.
     return Form(
@@ -37,6 +40,7 @@ class MyCustomFormState extends State<MyCustomForm> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           TextFormField(
+            controller: myController,
             autofocus: true,
             decoration: InputDecoration(labelText: 'Enter city id'),
             validator: (value) {
@@ -52,6 +56,7 @@ class MyCustomFormState extends State<MyCustomForm> {
               onPressed: () {
                 // Validate returns true if the form is valid, or false
                 // otherwise.
+                ids.add(int.parse(myController.text));
                 if (_formKey.currentState.validate()) {
                   // If the form is valid, display a Snackbar.
                   Scaffold.of(context)
